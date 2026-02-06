@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1500 500" width="1500" height="500">
+  <defs>
+    <linearGradient id="popGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#E91E63"/>
+      <stop offset="100%" style="stop-color:#FFD600"/>
+    </linearGradient>
+    <pattern id="dots" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+      <circle cx="10" cy="10" r="2" fill="white" opacity="0.12"/>
+    </pattern>
+    <!-- Star shape -->
+    <path id="star4" d="M0,-12 C3,-3 3,-3 12,0 C3,3 3,3 0,12 C-3,3 -3,3 -12,0 C-3,-3 -3,-3 0,-12Z"/>
+  </defs>
+
+  <!-- Background gradient -->
+  <rect width="1500" height="500" fill="url(#popGrad)"/>
+
+  <!-- Halftone dot overlay -->
+  <rect width="1500" height="500" fill="url(#dots)"/>
+
+  <!-- Decorative star accents -->
+  <use href="#star4" x="120" y="80" fill="white" opacity="0.6" transform="translate(120,80) scale(1.5)"/>
+  <use href="#star4" x="1350" y="120" fill="#00BCD4" opacity="0.7" transform="translate(1350,120) scale(2)"/>
+  <use href="#star4" x="200" y="400" fill="#00BCD4" opacity="0.5" transform="translate(200,400) scale(1)"/>
+  <use href="#star4" x="1400" y="380" fill="white" opacity="0.4" transform="translate(1400,380) scale(1.2)"/>
+  <use href="#star4" x="80" y="250" fill="#FFD600" opacity="0.3" transform="translate(80,250) scale(0.8)"/>
+
+  <!-- Main text -->
+  <text x="750" y="210" font-family="'Instrument Sans', system-ui, sans-serif" font-weight="600" font-size="72" fill="white" text-anchor="middle" letter-spacing="-1">
+    wonderwomancode
+  </text>
+
+  <!-- Tagline -->
+  <text x="750" y="280" font-family="'Instrument Serif', Georgia, serif" font-style="italic" font-size="32" fill="white" text-anchor="middle" opacity="0.9">
+    Code is my superpower.
+  </text>
+
+  <!-- Subtitle -->
+  <text x="750" y="340" font-family="'Instrument Sans', system-ui, sans-serif" font-weight="400" font-size="22" fill="white" text-anchor="middle" opacity="0.75">
+    CEO/CTO &amp; Co-founder, Alternate Futures
+  </text>
+</svg>

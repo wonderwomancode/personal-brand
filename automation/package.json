@@ -1,0 +1,29 @@
+{
+  "name": "@wonderwomancode/social-automation",
+  "version": "1.0.0",
+  "description": "Cross-posting and content adaptation automation for @wonderwomancode personal brand",
+  "type": "module",
+  "scripts": {
+    "cross-post": "tsx src/cross-post.ts",
+    "medium-to-social": "tsx src/medium-to-social.ts",
+    "monitor": "tsx src/post-monitor.ts",
+    "preview": "tsx src/preview.ts",
+    "setup": "tsx src/setup.ts"
+  },
+  "dependencies": {
+    "@atproto/api": "^0.13.0",
+    "commander": "^12.0.0",
+    "dotenv": "^16.4.0",
+    "masto": "^6.8.0",
+    "megalodon": "^9.0.0",
+    "node-fetch": "^3.3.0",
+    "rss-parser": "^3.13.0",
+    "turndown": "^7.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "@types/turndown": "^5.0.0",
+    "tsx": "^4.7.0",
+    "typescript": "^5.5.0"
+  }
+}

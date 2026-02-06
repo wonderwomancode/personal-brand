@@ -1,0 +1,6 @@
+node_modules/
+dist/
+.env
+.post-registry.json
+*.log
+.DS_Store

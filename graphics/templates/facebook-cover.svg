@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 312" width="820" height="312">
+  <defs>
+    <linearGradient id="warmGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFD600"/>
+      <stop offset="100%" style="stop-color:#E91E63"/>
+    </linearGradient>
+    <pattern id="dots-fb" x="0" y="0" width="14" height="14" patternUnits="userSpaceOnUse">
+      <circle cx="7" cy="7" r="1.2" fill="white" opacity="0.1"/>
+    </pattern>
+    <path id="star4-fb" d="M0,-12 C3,-3 3,-3 12,0 C3,3 3,3 0,12 C-3,3 -3,3 -12,0 C-3,-3 -3,-3 0,-12Z"/>
+  </defs>
+
+  <!-- Background -->
+  <rect width="820" height="312" fill="url(#warmGrad)"/>
+  <rect width="820" height="312" fill="url(#dots-fb)"/>
+
+  <!-- Stars -->
+  <use href="#star4-fb" fill="white" opacity="0.5" transform="translate(740,50) scale(1.5)"/>
+  <use href="#star4-fb" fill="#00BCD4" opacity="0.4" transform="translate(60,250) scale(1)"/>
+
+  <!-- Text (positioned right of center since FB avatar overlaps left) -->
+  <text x="490" y="135" font-family="'Instrument Sans', system-ui, sans-serif" font-weight="600" font-size="42" fill="white" text-anchor="middle">
+    wonderwomancode
+  </text>
+
+  <text x="490" y="180" font-family="'Instrument Serif', Georgia, serif" font-style="italic" font-size="22" fill="white" text-anchor="middle" opacity="0.9">
+    Code is my superpower.
+  </text>
+
+  <text x="490" y="220" font-family="'Instrument Sans', system-ui, sans-serif" font-weight="400" font-size="16" fill="white" text-anchor="middle" opacity="0.7">
+    CEO/CTO, Alternate Futures
+  </text>
+</svg>

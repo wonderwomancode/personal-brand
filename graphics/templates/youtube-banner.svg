@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2560 1440" width="2560" height="1440">
+  <defs>
+    <linearGradient id="darkGrad-yt" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1A1A2E"/>
+      <stop offset="100%" style="stop-color:#3D5AFE"/>
+    </linearGradient>
+    <pattern id="dots-yt" x="0" y="0" width="24" height="24" patternUnits="userSpaceOnUse">
+      <circle cx="12" cy="12" r="2" fill="#E91E63" opacity="0.06"/>
+    </pattern>
+    <path id="star4-yt" d="M0,-12 C3,-3 3,-3 12,0 C3,3 3,3 0,12 C-3,3 -3,3 -12,0 C-3,-3 -3,-3 0,-12Z"/>
+  </defs>
+
+  <!-- Full banner background -->
+  <rect width="2560" height="1440" fill="url(#darkGrad-yt)"/>
+  <rect width="2560" height="1440" fill="url(#dots-yt)"/>
+
+  <!-- Safe area guide (1546x423 centered) = x:507, y:508.5 -->
+  <!-- Content within safe area -->
+
+  <!-- Star accents (visible on all devices) -->
+  <use href="#star4-yt" fill="#FFD600" opacity="0.5" transform="translate(1900,550) scale(2.5)"/>
+  <use href="#star4-yt" fill="#E91E63" opacity="0.4" transform="translate(650,850) scale(2)"/>
+  <use href="#star4-yt" fill="#00BCD4" opacity="0.3" transform="translate(1950,880) scale(1.5)"/>
+  <use href="#star4-yt" fill="white" opacity="0.2" transform="translate(600,580) scale(1.2)"/>
+
+  <!-- Main text (within safe area) -->
+  <text x="1280" y="660" font-family="'Instrument Sans', system-ui, sans-serif" font-weight="600" font-size="96" fill="white" text-anchor="middle" letter-spacing="-1.5">
+    wonderwomancode
+  </text>
+
+  <text x="1280" y="740" font-family="'Instrument Serif', Georgia, serif" font-style="italic" font-size="42" fill="white" text-anchor="middle" opacity="0.85">
+    Building the decentralized cloud
+  </text>
+
+  <text x="1280" y="800" font-family="'Instrument Sans', system-ui, sans-serif" font-weight="400" font-size="28" fill="white" text-anchor="middle" opacity="0.6">
+    CEO/CTO &amp; Co-founder, Alternate Futures
+  </text>
+
+  <!-- Decorative line -->
+  <rect x="1130" y="770" width="300" height="2" fill="#E91E63" opacity="0.5" rx="1"/>
+
+  <!-- Outer area stars (visible on desktop/TV only) -->
+  <use href="#star4-yt" fill="#FFD600" opacity="0.15" transform="translate(200,200) scale(3)"/>
+  <use href="#star4-yt" fill="#E91E63" opacity="0.15" transform="translate(2350,200) scale(2.5)"/>
+  <use href="#star4-yt" fill="#00BCD4" opacity="0.15" transform="translate(200,1200) scale(2)"/>
+  <use href="#star4-yt" fill="white" opacity="0.1" transform="translate(2400,1200) scale(3)"/>
+</svg>
