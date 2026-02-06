@@ -31,7 +31,7 @@ https://x.com/wonderwomancode
 https://linkedin.com/in/wonderwomancode
 ```
 
-## Why YouTube (Recommended Addition)
+## Why YouTube
 
 - Video content has the highest engagement and trust-building potential
 - YouTube Shorts can be repurposed from other content easily

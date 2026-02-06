@@ -95,10 +95,10 @@ pnpm run monitor  # Watches for new Medium articles and auto-cross-posts
 | Farcaster | @wonderwomancode | Active |
 | Lens Protocol | @wonderwomancode.lens | Active |
 | Medium | @wonderwomancode | Active |
-| Threads | @wonderwomancode | Recommended |
-| YouTube | @wonderwomancode | Recommended |
+| Threads | @wonderwomancode | Active |
+| YouTube | @wonderwomancode | Active |
 | GitHub | wonderwomancode | Active |
-| Dev.to | @wonderwomancode | Recommended |
+| Dev.to | @wonderwomancode | Active |
 
 ## Using with Claude Code
 

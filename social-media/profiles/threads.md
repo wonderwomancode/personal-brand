@@ -10,7 +10,7 @@
 | **Avatar** | Halftone pop-art portrait (shared with Instagram) |
 | **Link** | alternatefutures.ai |
 
-## Why Threads (Recommended Addition)
+## Why Threads
 
 - Growing rapidly with Instagram's built-in audience
 - ActivityPub/Fediverse integration (connects to Mastodon ecosystem)

@@ -12,7 +12,7 @@
 | **GitHub** | wonderwomancode |
 | **Twitter** | wonderwomancode |
 
-## Why Dev.to (Recommended Addition)
+## Why Dev.to
 
 - Large developer community with high engagement
 - Great SEO (Dev.to articles rank well)
