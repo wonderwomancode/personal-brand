@@ -6,6 +6,7 @@
  */
 
 import { config, type Platform, PLATFORM_CHAR_LIMITS } from "./config.js";
+import { checkRateLimit, recordPost, rateLimitSummary } from "./rate-limiter.js";
 
 export interface PostOptions {
   /** URL to link to (for platforms that support link previews) */
@@ -451,7 +452,29 @@ export async function postToAll(
       if (!content) {
         return { platform, success: false, error: "No adapted content" } as PostResult;
       }
-      return platformPosters[platform](content, opts);
+
+      // Check rate limits before posting
+      const limit = checkRateLimit(platform);
+      if (!limit.allowed) {
+        return {
+          platform,
+          success: false,
+          error: `Rate limit reached: ${limit.used}/${limit.limit} posts this month. Post manually instead.`,
+        } as PostResult;
+      }
+
+      if (limit.remaining <= 10 && limit.remaining > 0) {
+        console.log(`  [WARN] ${platform}: ${limit.remaining} posts remaining this month`);
+      }
+
+      const result = await platformPosters[platform](content, opts);
+
+      // Track successful posts
+      if (result.success) {
+        recordPost(platform);
+      }
+
+      return result;
     })
   );
 

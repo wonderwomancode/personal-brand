@@ -4,6 +4,7 @@ dist/
 .env.*
 !.env.example
 .post-registry.json
+.rate-usage.json
 *.log
 .DS_Store
 *.pem

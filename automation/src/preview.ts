@@ -15,6 +15,7 @@ import { readFileSync } from "fs";
 import { program } from "commander";
 import { PLATFORM_CHAR_LIMITS, type Platform } from "./config.js";
 import { adaptContent, type SourceContent } from "./content-adapter.js";
+import { checkRateLimit, rateLimitSummary } from "./rate-limiter.js";
 
 const ALL_PLATFORMS: Platform[] = [
   "twitter",
@@ -75,13 +76,21 @@ function main() {
     const usage = Math.round((content.length / limit) * 100);
     const status = content.length <= limit ? "OK" : "OVER LIMIT";
 
-    console.log(`--- ${platform.toUpperCase()} (${content.length}/${limit} chars, ${usage}%) [${status}] ---`);
+    const rate = checkRateLimit(platform);
+    const rateStr = rate.limit === Infinity ? "" : ` | API: ${rate.used}/${rate.limit} this month`;
+    const rateWarn = rate.allowed ? "" : " [RATE LIMIT HIT - post manually]";
+
+    console.log(`--- ${platform.toUpperCase()} (${content.length}/${limit} chars, ${usage}%) [${status}]${rateStr}${rateWarn} ---`);
     console.log();
     console.log(content);
     console.log();
     console.log("-".repeat(60));
     console.log();
   }
+
+  // Show rate limit summary
+  console.log(rateLimitSummary());
+  console.log();
 }
 
 main();
