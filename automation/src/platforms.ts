@@ -377,6 +377,89 @@ export async function postToThreads(content: string, opts: PostOptions = {}): Pr
   }
 }
 
+export async function postToReddit(content: string, opts: PostOptions = {}): Promise<PostResult> {
+  if (!config.reddit.enabled) {
+    return { platform: "reddit", success: false, error: "Reddit not configured" };
+  }
+
+  try {
+    // Step 1: Get OAuth token
+    const authResponse = await fetch("https://www.reddit.com/api/v1/access_token", {
+      method: "POST",
+      headers: {
+        Authorization: `Basic ${Buffer.from(`${config.reddit.clientId}:${config.reddit.clientSecret}`).toString("base64")}`,
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      body: new URLSearchParams({
+        grant_type: "password",
+        username: config.reddit.username!,
+        password: config.reddit.password!,
+      }),
+    });
+
+    const authData = (await authResponse.json()) as { access_token?: string };
+    if (!authData.access_token) {
+      return { platform: "reddit", success: false, error: "Reddit auth failed" };
+    }
+
+    // Step 2: Submit post to user profile (u/wonderwomancode)
+    const text = truncate(content, PLATFORM_CHAR_LIMITS.reddit);
+    const submitBody: Record<string, string> = {
+      api_type: "json",
+      kind: opts.url ? "link" : "self",
+      sr: `u_${config.reddit.username}`,
+      title: text.split("\n")[0]?.slice(0, 300) ?? text.slice(0, 300),
+    };
+
+    if (opts.url) {
+      submitBody.url = opts.url;
+    } else {
+      submitBody.text = text;
+    }
+
+    const response = await fetch("https://oauth.reddit.com/api/submit", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${authData.access_token}`,
+        "Content-Type": "application/x-www-form-urlencoded",
+        "User-Agent": "wonderwomancode-automation/1.0",
+      },
+      body: new URLSearchParams(submitBody),
+    });
+
+    const data = (await response.json()) as { json?: { data?: { url?: string; id?: string } } };
+
+    if (data.json?.data?.url) {
+      return {
+        platform: "reddit",
+        success: true,
+        postId: data.json.data.id,
+        postUrl: data.json.data.url,
+      };
+    }
+
+    return { platform: "reddit", success: false, error: JSON.stringify(data) };
+  } catch (err) {
+    return { platform: "reddit", success: false, error: String(err) };
+  }
+}
+
+export async function postToTikTok(content: string, opts: PostOptions = {}): Promise<PostResult> {
+  if (!config.tiktok.enabled) {
+    return { platform: "tiktok", success: false, error: "TikTok not configured" };
+  }
+
+  // TikTok's Content Posting API is video-only.
+  // Text posts are not supported via API.
+  // For cross-posting, generate a video (e.g. text-on-brand-background)
+  // or use TikTok's photo carousel feature.
+  return {
+    platform: "tiktok",
+    success: false,
+    error: "TikTok API requires video content. Use TikTok app directly for text posts, or generate a short video/carousel from your content first.",
+  };
+}
+
 // ─── Helpers ─────────────────────────────────────────
 
 function truncate(text: string, limit: number): string {
@@ -431,6 +514,8 @@ const platformPosters: Record<Platform, (content: string, opts: PostOptions) => 
   farcaster: postToFarcaster,
   lens: postToLens,
   threads: postToThreads,
+  reddit: postToReddit,
+  tiktok: postToTikTok,
 };
 
 export async function postToAll(

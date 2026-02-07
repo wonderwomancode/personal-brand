@@ -99,6 +99,24 @@ export const config = {
       return !!(this.userId && this.accessToken);
     },
   },
+
+  reddit: {
+    clientId: envOptional("REDDIT_CLIENT_ID"),
+    clientSecret: envOptional("REDDIT_CLIENT_SECRET"),
+    username: envOptional("REDDIT_USERNAME"),
+    password: envOptional("REDDIT_PASSWORD"),
+    get enabled() {
+      return !!(this.clientId && this.clientSecret && this.username && this.password);
+    },
+  },
+
+  tiktok: {
+    accessToken: envOptional("TIKTOK_ACCESS_TOKEN"),
+    openId: envOptional("TIKTOK_OPEN_ID"),
+    get enabled() {
+      return !!(this.accessToken && this.openId);
+    },
+  },
 } as const;
 
 export type Platform =
@@ -110,7 +128,9 @@ export type Platform =
   | "mastodon"
   | "farcaster"
   | "lens"
-  | "threads";
+  | "threads"
+  | "reddit"
+  | "tiktok";
 
 export const PLATFORM_CHAR_LIMITS: Record<Platform, number> = {
   twitter: 280,
@@ -122,6 +142,8 @@ export const PLATFORM_CHAR_LIMITS: Record<Platform, number> = {
   farcaster: 1024,
   lens: 5000,
   threads: 500,
+  reddit: 40000,
+  tiktok: 2200,
 };
 
 export function getEnabledPlatforms(): Platform[] {
@@ -135,5 +157,7 @@ export function getEnabledPlatforms(): Platform[] {
   if (config.farcaster.enabled) platforms.push("farcaster");
   if (config.lens.enabled) platforms.push("lens");
   if (config.threads.enabled) platforms.push("threads");
+  if (config.reddit.enabled) platforms.push("reddit");
+  if (config.tiktok.enabled) platforms.push("tiktok");
   return platforms;
 }

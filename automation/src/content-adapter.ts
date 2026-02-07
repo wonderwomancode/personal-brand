@@ -64,6 +64,10 @@ function adaptForPlatform(source: SourceContent, platform: Platform): string {
       return adaptForLens(source, limit);
     case "instagram":
       return adaptForInstagram(source, limit);
+    case "reddit":
+      return adaptForReddit(source, limit);
+    case "tiktok":
+      return adaptForTikTok(source, limit);
     default:
       return truncateWithUrl(source.text, source.url, limit);
   }
@@ -285,6 +289,61 @@ function adaptForInstagram(source: SourceContent, limit: number): string {
   let result = parts.join("\n");
   if (result.length > limit) {
     result = result.slice(0, limit - 3) + "...";
+  }
+
+  return result;
+}
+
+function adaptForReddit(source: SourceContent, limit: number): string {
+  // Reddit: Title is required (first line), body is the rest.
+  // Posts to user profile (u/wonderwomancode). Longer form welcome.
+  // No hashtags. No hype. Reddit hates self-promotion -- lead with value.
+  const parts: string[] = [];
+
+  if (source.title) {
+    parts.push(source.title);
+    parts.push("");
+  }
+
+  parts.push(source.text);
+
+  if (source.url) {
+    parts.push("");
+    parts.push(source.url);
+  }
+
+  let result = parts.join("\n");
+  if (result.length > limit) {
+    result = result.slice(0, limit - 3) + "...";
+  }
+
+  return result;
+}
+
+function adaptForTikTok(source: SourceContent, limit: number): string {
+  // TikTok: Video caption. Short, punchy, hashtag-heavy for discovery.
+  // This generates the caption text -- video must be created separately.
+  const parts: string[] = [];
+
+  const text = source.summary ?? source.title ?? source.text;
+  parts.push(text);
+
+  const hashtags = [
+    ...(source.hashtags ?? []),
+    "wonderwomancode",
+    "TechTok",
+    "CodingLife",
+    "WomenInTech",
+  ].slice(0, 8);
+
+  parts.push("");
+  parts.push(hashtags.map((h) => (h.startsWith("#") ? h : `#${h}`)).join(" "));
+
+  let result = parts.join("\n");
+  if (result.length > limit) {
+    const hashStr = hashtags.map((h) => (h.startsWith("#") ? h : `#${h}`)).join(" ");
+    const textLimit = limit - hashStr.length - 2;
+    result = text.slice(0, textLimit - 3) + "...\n\n" + hashStr;
   }
 
   return result;

@@ -2,7 +2,7 @@
 
 A comprehensive personal brand management system for **@wonderwomancode** (CEO/CTO & Co-founder of [Alternate Futures](https://alternatefutures.ai)).
 
-This repo contains everything needed to maintain a consistent, professional, and whimsical personal brand across 13+ social platforms -- including brand guidelines, social media profiles, cross-posting automation, graphics templates, and AI agent definitions.
+This repo contains everything needed to maintain a consistent, professional, and whimsical personal brand across 15 social platforms -- including brand guidelines, social media profiles, cross-posting automation, graphics templates, and AI agent definitions.
 
 ## What's Inside
 
@@ -16,7 +16,7 @@ This repo contains everything needed to maintain a consistent, professional, and
 - **Platform profiles** with bio copy, content strategy, and posting guidelines for:
   - X/Twitter, LinkedIn, Bluesky, Farcaster, Lens Protocol
   - Instagram, Facebook, Threads, Mastodon
-  - Medium, YouTube, GitHub, Dev.to
+  - Medium, YouTube, GitHub, Dev.to, Reddit, TikTok
 
 ### Automation (`automation/`)
 - **Cross-poster** - Post to all platforms with automatic content adaptation
@@ -91,7 +91,7 @@ pnpm run monitor  # Watches for new Medium articles and auto-cross-posts
 | Bluesky | @wonderwomancode.bsky.social | Active |
 | Instagram | @wonderwomancode | Active |
 | Facebook | wonderwomancode | Active |
-| Mastodon | @wonderwomancode@hachyderm.io | Active |
+| Mastodon | @wonderwomancode@techhub.social | Active |
 | Farcaster | @wonderwomancode | Active |
 | Lens Protocol | @wonderwomancode.lens | Active |
 | Medium | @wonderwomancode | Active |
@@ -99,6 +99,8 @@ pnpm run monitor  # Watches for new Medium articles and auto-cross-posts
 | YouTube | @wonderwomancode | Active |
 | GitHub | wonderwomancode | Active |
 | Dev.to | @wonderwomancode | Active |
+| Reddit | u/wonderwomancode | Active |
+| TikTok | @wonderwomancode | Active |
 
 ## Using with Claude Code
 
